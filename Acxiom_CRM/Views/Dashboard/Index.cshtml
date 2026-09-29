@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<style>
+    body {
+       background-color: rgb(31, 64, 94);
+    }
+</style>
+
+<h2 class="mb-4"  style="color: rgb(255, 202, 0);">
+    CRM Dashboard
+</h2>
+
+<div class="row">
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Total Customers</h6>
+
+                <h2>
+                    @ViewBag.TotalCustomers
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Total Leads</h6>
+
+                <h2>
+                    @ViewBag.TotalLeads
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Open Opportunities</h6>
+
+                <h2>
+                    @ViewBag.OpenOpportunities
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Won Opportunities</h6>
+
+                <h2>
+                    @ViewBag.WonOpportunities
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Total Sales</h6>
+
+                <h2>
+                    ₹ @ViewBag.TotalSales.ToString("N0")
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4 mb-3">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6>Pending Follow-ups</h6>
+
+                <h2>
+                    @ViewBag.PendingFollowUps
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-6">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h5>CRM Statistics</h5>
+
+                <canvas id="crmChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    const ctx =
+        document.getElementById('crmChart');
+
+    new Chart(ctx,
+    {
+        type: 'bar',
+
+        data:
+        {
+            labels:
+            [
+                'Customers',
+                'Leads',
+                'Open Opportunities',
+                'Won Opportunities'
+            ],
+
+            datasets:
+            [{
+                label: 'CRM Data',
+
+                data:
+                [
+                    @ViewBag.TotalCustomers,
+                    @ViewBag.TotalLeads,
+                    @ViewBag.OpenOpportunities,
+                    @ViewBag.WonOpportunities
+                ]
+            }]
+        }
+    });
+
+</script>

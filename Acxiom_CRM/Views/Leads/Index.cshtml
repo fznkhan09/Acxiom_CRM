@@ -1,0 +1,82 @@
+@model IEnumerable<Acxiom_CRM.Models.Lead>
+
+@{
+    ViewData["Title"] = "Leads";
+}
+ <style>
+    body {
+       background-color: rgb(31, 64, 94);
+    }
+</style>
+
+<h1 style="color: rgb(255, 202, 0);">Lead Management</h1>
+
+<p>
+    <a asp-action="Create" style="color: rgb(255, 202, 0);">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LeadName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeadSource)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeadStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedValue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.LeadName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LeadSource)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LeadStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ExpectedValue)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LeadId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LeadId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LeadId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

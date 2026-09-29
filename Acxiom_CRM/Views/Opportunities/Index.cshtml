@@ -1,0 +1,76 @@
+@model IEnumerable<Acxiom_CRM.Models.Opportunity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+   <style>
+    body {
+       background-color: rgb(31, 64, 94);
+    }
+</style>
+
+<h1 style="color: rgb(255, 202, 0);">Opportunity</h1>
+
+<p>
+    <a asp-action="Create" style="color: rgb(255, 202, 0);">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OpportunityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Probability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesStage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedCloseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.OpportunityName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Probability)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.SalesStage)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ExpectedCloseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OpportunityId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.OpportunityId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.OpportunityId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

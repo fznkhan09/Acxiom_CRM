@@ -1,0 +1,64 @@
+@model IEnumerable<Acxiom_CRM.Models.FollowUp>
+
+@{
+    ViewData["Title"] = "FollowUp";
+}
+   <style>
+    body {
+       background-color: rgb(31, 64, 94);
+    }
+</style>
+
+<h1 style="color: rgb(255, 202, 0);">FollowUps</h1>
+
+<p>
+    <a asp-action="Create" style="color: rgb(255, 202, 0);">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FollowUpDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FollowUpType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.FollowUpDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.FollowUpType)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Remarks)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Status)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FollowUpId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FollowUpId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FollowUpId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

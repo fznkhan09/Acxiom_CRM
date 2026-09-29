@@ -1,0 +1,96 @@
+
+@model IEnumerable<Acxiom_CRM.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customers";
+}
+  <style>
+    body {
+       background-color: rgb(31, 64, 94);
+    }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 style="color: rgb(255, 202, 0);">Customer Management</h2>
+
+    <a asp-action="Create" class="btn btn-primary">
+        + Create Customer
+    </a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pincode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CustomerName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                <td>@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.Pincode)</td>
+                <td>
+                    @if (item.IsActive)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Inactive</span>
+                    }
+                </td>
+                <td>@item.CreatedDate.ToString("dd-MM-yyyy")</td>
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-customerid="@item.CustomerId"
+                       class="btn btn-sm btn-warning">
+                        Edit
+                    </a>
+
+                    <a asp-action="Details"
+                       asp-route-customerid="@item.CustomerId"
+                       class="btn btn-sm btn-info">
+                        Details
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-customerid="@item.CustomerId"
+                       class="btn btn-sm btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+```

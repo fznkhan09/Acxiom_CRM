@@ -1,0 +1,69 @@
+@model Acxiom_CRM.Models.Lead
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Lead</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LeadId" />
+            <div class="form-group">
+                <label asp-for="LeadName" class="control-label"></label>
+                <input asp-for="LeadName" class="form-control" />
+                <span asp-validation-for="LeadName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyName" class="control-label"></label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadSource" class="control-label"></label>
+                <input asp-for="LeadSource" class="form-control" />
+                <span asp-validation-for="LeadSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadStatus" class="control-label"></label>
+                <input asp-for="LeadStatus" class="form-control" />
+                <span asp-validation-for="LeadStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpectedValue" class="control-label"></label>
+                <input asp-for="ExpectedValue" class="form-control" />
+                <span asp-validation-for="ExpectedValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

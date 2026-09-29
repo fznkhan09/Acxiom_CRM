@@ -1,0 +1,64 @@
+@model IEnumerable<Acxiom_CRM.Models.AuditLog>
+
+@{
+    ViewData["Title"] = "Audit Log";
+}
+ <style>
+    body {
+       background-color: rgb(31, 64, 94);
+    }
+</style>
+
+<h1 style="color: rgb(255, 202, 0);">Audit Log</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EntityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Action)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.EntityName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.EntityId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.CreatedDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AuditLogId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AuditLogId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AuditLogId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
